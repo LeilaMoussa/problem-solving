@@ -1,5 +1,5 @@
 # problem-solving
-Technical interview questions and some competitive programming problems.
+Technical interview questions and some competitive programming problems. I include as many approaches as I can with comments.
 Feedback/suggestions and especially hefty testing of all these solutions is very much appreciated.
 
 1- longestSubsequence.py: given a string S, find the longest subsequence of S out of the words of a dictionary (just a list) D.
