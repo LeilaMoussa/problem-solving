@@ -26,6 +26,7 @@ def string2dict(s: str) -> dict:
     return s_dict
 
 def veb_tree_search():
+    # van emde boas tree (yikes)
     # for log log N search
     # i need to implement the veb class in another file
     # and figure out how to use it efficiently
