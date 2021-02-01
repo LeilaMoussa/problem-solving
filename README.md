@@ -6,7 +6,7 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 
 2- student_heights.py: given an array of heights of students who enter one by one, find the minimum number of rows that can be formed by the students such that any newly joined student must be shorter than ALL the students in a certain row.
 
-3- 3sum.py: classic three number sum problem.
+3- 3sum.py: (not here yet.) classic three number sum problem. (2-sum and n-sum are there too.)
 
 4- dictionary_queries.py: (not here yet) Given a bunch of words, find all the words that match a certain query that consists of characters to be matched and wildcard characters ('?') meaning any character. For example "?at" refers to "cat" or "hat".
 
