@@ -2,6 +2,8 @@ from collections import defaultdict
 from functools import reduce
 import re
 
+# Need to import trie (another file) and use it here.
+
 def regex(words: list, queries: list):
     # Time & space complexity??
     ans = defaultdict(list)
