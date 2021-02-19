@@ -16,6 +16,6 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 
 7- trie.py: Just a couple of implementations of trie/prefix-tree.
 
-8- LRU.py: LRU cache implementation.
+8- LRU.py: LRU cache implementation. I may add another with one DS instead of 2: OrderedDict.
 
 9- number_pad.py: (not here yet) Real coding interview question. Given a pad like those found on old cell phones, and given a sequence of digits presses, return all possible words that could have been typed.
