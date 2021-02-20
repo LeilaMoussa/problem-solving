@@ -3,7 +3,12 @@ number_pad = {
     '2': ['d', 'e', 'f']
     }
 
-def get_words(seq: str, prefix: str) -> list:    
+def get_words(seq: str, prefix: str) -> list:
+    """ seq is the current sequence of digits pressed (keeps getting truncated)
+    prefix is the beginning of the words we're trying to form at that iteration,
+    we keep adding to it as we go down.
+    """
+    
     # seq can't get empty.
     digit = seq[0]
     if len(seq) == 1:
