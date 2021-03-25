@@ -21,3 +21,5 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 9- number_pad.py: Real interview question. Given a pad like those found on old cell phones, and given a sequence of digits presses, return all possible words that could have been typed.
 
 10- interleave.py: just interleave two strings.
+
+11- grep.py: simulate the grep command (search for a match of a string in a file and print the context of the matches, taking into account bounds and overlaps.)
