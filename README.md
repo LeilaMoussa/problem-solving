@@ -25,3 +25,5 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 11- grep.py: simulate the grep command (search for a match of a string in a file and print the context of the matches, taking into account bounds and overlaps.)
 
 12- uniform_pick.py: Given a stream of numbers, pick one with uniform probability in O(1) space (the number of numbers is not known at first).
+
+13 - container_most_water.rs: (https://leetcode.com/problems/container-with-most-water/) I didn't search for the answer so there's probably an even better way.
