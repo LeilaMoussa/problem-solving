@@ -31,7 +31,7 @@ impl Solution {
         while left < right {
             let area = Solution::get_area(left, right, height[left], height[right]);
             if area > max_area {
-                max_area = area
+                max_area = area;
             }
             if height[left] <= height[right] {
                 left = left + 1;
@@ -45,5 +45,6 @@ impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {
         //Solution::brute_force(height)
         Solution::two_ptrs(height)
+        
     }
 }
