@@ -29,3 +29,5 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 13 - container_most_water.rs: (https://leetcode.com/problems/container-with-most-water/) I didn't search for the answer so there's probably an even better way.
 
 14 - add_two_numbers.py: (https://leetcode.com/problems/add-two-numbers/submissions/) New version but still not fast nor elegant enough.
+
+15 - palindrome.rs: (https://leetcode.com/problems/palindrome-number/submissions/) Could be faster and cooler, I'm figuring that out.
