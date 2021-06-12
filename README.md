@@ -28,4 +28,4 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 
 13 - container_most_water.rs: (https://leetcode.com/problems/container-with-most-water/) I didn't search for the answer so there's probably an even better way.
 
-14 - add_two_numbers.py: (https://leetcode.com/problems/add-two-numbers/submissions/) Slow and ugly :( I'll try to improve this one. Also, the linked list behavior is weird and I'll see if I can identify the problem.
+14 - add_two_numbers.py: (https://leetcode.com/problems/add-two-numbers/submissions/) New version but still not fast nor elegant enough.

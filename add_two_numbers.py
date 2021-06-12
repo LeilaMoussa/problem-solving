@@ -11,17 +11,6 @@ class ListNode:
                 self.next.display()
 
 class Solution:
-    def append_to_list_util(self, lis: ListNode, new_node: ListNode):
-        assert(new_node != None)
-        if lis == None:
-            lis = new_node
-            assert(lis != None)
-        else:
-            walker = lis
-            while walker.next:
-                walker = walker.next
-            walker.next = new_node
-    
     def make_node(self, val1: int, val2: int, carry: int) -> (ListNode, int):
         # Oh! Happy day! That type-hint syntax for return types is fine!
         _sum = val1 + val2 + carry
@@ -30,27 +19,30 @@ class Solution:
     
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         carry = 0
-        first = True
-        result = None
+        result = walker = None
         while l1 and l2:
             new_node, carry = self.make_node(l1.val, l2.val, carry)
             # What the heck? Why doesn't this work in append_to_list_util()??
             if result == None:
                 result = new_node
+                walker = result
             else:
-                self.append_to_list_util(result, new_node)
-            assert(result != None)
+                walker.next = new_node
+                walker = walker.next
             l1, l2 = l1.next, l2.next
         while l1:
             new_node, carry = self.make_node(l1.val, 0, carry)
-            self.append_to_list_util(result, new_node)
+            walker.next = new_node
+            walker = walker.next
             l1 = l1.next
         while l2:
             new_node, carry = self.make_node(0, l2.val, carry)
-            self.append_to_list_util(result, new_node)
+            walker.next = new_node
+            walker = walker.next
             l2 = l2.next
         if carry > 0:
-            self.append_to_list_util(result, ListNode(carry))
+            walker.next = ListNode(carry)
+            walker = walker.next
         return result
 
 def main():
@@ -63,7 +55,7 @@ def main():
     l1 = ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))))
     l2 = ListNode(9, ListNode(9, ListNode(9, ListNode(9))))
     sol = Solution()
-    ans = sol.add_two_numbers(l1, l2)
+    ans = sol.addTwoNumbers(l1, l2)
     ans.display()
 
 if __name__ == '__main__':
