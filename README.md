@@ -27,3 +27,5 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 12- uniform_pick.py: Given a stream of numbers, pick one with uniform probability in O(1) space (the number of numbers is not known at first).
 
 13 - container_most_water.rs: (https://leetcode.com/problems/container-with-most-water/) I didn't search for the answer so there's probably an even better way.
+
+14 - add_two_numbers.py: (https://leetcode.com/problems/add-two-numbers/submissions/) Slow and ugly :( I'll try to improve this one. Also, the linked list behavior is weird and I'll see if I can identify the problem.
