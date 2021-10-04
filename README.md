@@ -31,3 +31,14 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 14 - add_two_numbers.py: (https://leetcode.com/problems/add-two-numbers/submissions/) New version but still not fast nor elegant enough.
 
 15 - palindrome.rs: (https://leetcode.com/problems/palindrome-number/submissions/) Could be faster and cooler, I'm figuring that out.
+
+16 - kmp.rs: todo
+
+17 - avl.py: todo
+
+18 - dfs.rs: todo, but not with plain graph, use to solve some interesting problem instead
+
+Loose ends:
+-  edit_distance: 2 more variations
+-  red_black
+-  trie
