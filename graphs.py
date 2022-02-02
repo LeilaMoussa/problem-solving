@@ -63,6 +63,9 @@ def find_min_util(vals, st):
             min_node = node
     return min_node
 
+def find_cycle():
+    pass
+
 graph = {
     1: [2],
     2: [3, 4],

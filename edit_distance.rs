@@ -2,7 +2,7 @@
 #![allow(non_upper_case_globals)]
 #![allow(unused)]
 
-// Minimum cost to covert string1 to string2
+/// Minimum cost to convert string1 to string2
 
 use std::cmp;
 
@@ -10,16 +10,10 @@ fn main() {
 	const string1: &str = "hello";
 	const string2: &str = "henlo!";
 
-	// let moves_recursive: usize = edit_distance_recursive(string1.get(..), string2.get(..));
-	// println!("Total moves {}", moves_recursive);
-
+	let moves_recursive: usize = edit_distance_recursive(string1.get(..), string2.get(..));
 	let moves_dp = edit_distance_dp(string1, string2, string1.len(), string2.len());
-	println!("Total moves {:?}", moves_dp);
 
-	// let ascii_moves: usize = edit_distance_ascii(r1, r2);
-
-	// let deletions: usize = edit_distance_deletion(r1, r2);
-
+	assert_eq!(moves_recursive, moves_dp);
 }
 
 fn edit_distance_dp(string1: &str, string2: &str, n: usize, m: usize) -> usize {
@@ -80,13 +74,4 @@ fn edit_distance_recursive(s1: Option<&str>, s2: Option<&str>) -> usize {
 	return 1 + cmp::min(edit_distance_recursive(string1.get(0..n-1), string2.get(0..m)),
 				cmp::min(edit_distance_recursive(string1.get(0..n), string2.get(0..m-1)),
 							edit_distance_recursive(string1.get(0..n-1), string2.get(0..m-1))));
-	// cmp::min takes 2 vals only lol
 }
-
-// fn edit_distance_ascii() {
-
-// }
-
-// fn edit_distance_deletion() {
-
-// }
