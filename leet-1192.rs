@@ -1,14 +1,26 @@
-#![allow(unused)]
 #![allow(non_upper_case_globals)]
 
 /* https://leetcode.com/problems/critical-connections-in-a-network/ */
-/* Probably one of the worst Rust programs I've ever written -- I need to find a cleaner alt to thread_local. */
+
+/*
+Gives wrong answer on
+Input
+6
+[[0,1],[1,2],[2,0],[1,3],[3,4],[4,5],[5,3]]
+Output
+[[1,3],[3,4],[5,3]]
+Expected
+[[1,3]]
+*/
+
+/*
+After making it pass leetcode, I'll try to find a better way than thread_local.
+*/
 
 use std::cmp;
 use std::cell::RefCell;
-use std::cell::RefMut;
 
-static N: i32 = 4;
+static N: i32 = 100_000; // I'll try to find a way around this.
 thread_local! {
     static stack: RefCell<Vec<i32>> = RefCell::new(vec![]);
     static low: RefCell<Vec<i32>> = RefCell::new(vec![-1; N as usize]);
@@ -17,14 +29,6 @@ thread_local! {
     static adj_list: RefCell<Vec<Vec<i32>>> = RefCell::new(vec![]);
 }
 
-fn main() {
-    let n = 4;
-    let connections: Vec<Vec<i32>> = vec![vec![0,1],vec![1,2],vec![2,0],vec![1,3]];
-    let ans: Vec<Vec<i32>> = Solution::critical_connections(n, connections);
-    println!("{:?}", ans);
-}
-
-pub struct Solution {}
 impl Solution {
     pub fn make_adj_list(mut n: i32, connections: &Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let mut res: Vec<Vec<i32>> = vec![];
@@ -42,6 +46,8 @@ impl Solution {
     pub fn dfs(current: i32) {
         stack.with(|s| {
             s.borrow_mut().push(current);
+            // println!("{:?}", s.borrow());
+            // Still not quite the behavior we'd like to see -- should empty the stack when an SCC is found
         });
 
         on_stack.with(|on| {
@@ -60,20 +66,26 @@ impl Solution {
             for neighbor in adj.borrow()[current as usize].iter() {
                 visited.with(|v| {
                     if v.borrow()[*neighbor as usize] == false {
+                        // If neighbor is not visited, dfs on it.
                         Self::dfs(*neighbor);
-                    }
-                });
-
-                on_stack.with(|on| {
-                    if on.borrow()[*neighbor as usize] {
+                        // immediately min
                         low.with(|lo| {
                             let temp = cmp::min(lo.borrow()[current as usize], lo.borrow()[*neighbor as usize]);
                             lo.borrow_mut()[current as usize] = temp;
                         });
+                    } // else if neighbor is on the stack, low(current) = min( low(current), id(neighbor) )
+                    // I have no idea what that means.
+                    else {
+                        on_stack.with(|on| {
+                            if on.borrow()[*neighbor as usize] {
+                                low.with(|lo| {
+                                    let temp = cmp::min(lo.borrow()[current as usize], *neighbor);
+                                    lo.borrow_mut()[current as usize] = temp;
+                                });
+                            }
+                        });
                     }
                 });
-                
-                
             }
         });
         
@@ -88,8 +100,7 @@ impl Solution {
                         if member == current {
                             break;
                         }
-                        // I need to understand why this line is necessary, even though we're min-ing
-                        lo.borrow_mut()[member as usize] = current;
+                        //lo.borrow_mut()[member as usize] = current;
                     }
                 })
             }
@@ -97,6 +108,10 @@ impl Solution {
     }
     
     pub fn critical_connections(n: i32, connections: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        if n == 2 {
+            return connections;
+        }
+        
         adj_list.with(|adj| {
             *adj.borrow_mut() = Self::make_adj_list(n, &connections);
         });
@@ -110,12 +125,7 @@ impl Solution {
                 }
             });
         }
-        // By the end, low tells us where the SCCs are, now we need to somehow get the edges
-        // that don't link the vertices in those SCCs.
-        // Maybe: for each connection, if it connects a vertex from one SCC to another, add it to answer.
-        // But that means you need to construct each SCC as a hashset for example
-        // No -- vertices in a SCC share low link values, so for each edge, if the vertices have different
-        // low links, it's a bridge, so add to ans.
+        
         let mut ans: Vec<Vec<i32>> = vec![];
         for edge in connections.into_iter() {
             low.with(|lo| {
