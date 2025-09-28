@@ -2,7 +2,7 @@
 Algorithms and data structures for technical interviews and competitive programming.
 Feedback/suggestions and especially hefty testing of all these solutions is very much appreciated.
 
-1- longestSubsequence.py: Given a string S, find the longest subsequence of S out of the words of a dictionary (just a list) D.
+1- longest_subsequence.py: Given a string S, find the longest subsequence of S out of the words of a dictionary (just a list) D.
 
 2- student_heights.py: Given an array of heights of students who enter one by one, find the minimum number of rows that can be formed by the students such that any newly joined student must be shorter than ALL the students in a certain row.
 
@@ -18,7 +18,7 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 
 8- LRU.py: LRU cache implementation. I may add another with one DS instead of 2: OrderedDict.
 
-9- number_pad.py: Real interview question. Given a pad like those found on old cell phones, and given a sequence of digits presses, return all possible words that could have been typed.
+9- number_pad.py: Real interview question. Given a pad like those found on old cell phones, and given a sequence of digits presses (without number of consecutive presses of same digit), return all possible words that could have been typed.
 
 10- interleave.py: just interleave two strings.
 
@@ -32,11 +32,24 @@ Feedback/suggestions and especially hefty testing of all these solutions is very
 
 15 - palindrome.rs: (https://leetcode.com/problems/palindrome-number/submissions/) Could be faster and cooler, I'm figuring that out.
 
-16 - kmp.rs: todo
+16 - kmp.rs: String search. Given text and pattern, return all indices where pattern occurs in text. Todo
 
 17 - avl.py: todo
 
 18 - dfs.rs: todo, but not with plain graph, use to solve some interesting problem instead
+
+19 - add_two_numbers.py: Add two numbers expressed as linked lists, with one digit per node. return the answer as a linked list. E.g., the number 123 is expressed as 3 -> 2 -> 1.
+
+20 - correct_clock.py: Given two 24-H format times as strings, return the minimum number of moves required to transform time1 to time2 using a combination of only the 4 following moves:
+- move forward by 5m
+- move forward by 15 mn
+- move forward by 30mn
+- move forward by 1hr (60mn)
+time1 does not necessarily occur before time2.
+
+21 - decompress.py: turn 2[3[a]b] aaabaaab
+
+22 - median.rs / leet-4.rs: return the median of two sorted arrays. median.rs looks like the better of the two implementations.
 
 Loose ends:
 -  edit_distance: 2 more variations
