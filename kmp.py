@@ -14,8 +14,8 @@ def preprocess(pattern: str) -> list:
                 lps[i] = longest_at_i
                 i += 1
             else:
-                # just because the current prefix-suffix doesn't reach i, doesn't mean it can't reach i-1
-                # so shrink the possible match by one and continue
+                # can't extend length
+                # but pattern[0:something] = pattern[i-something:i] where something is the new len and something < previous len
                 if longest_at_i > 0:
                     longest_at_i = lps[longest_at_i - 1]
                 else:
